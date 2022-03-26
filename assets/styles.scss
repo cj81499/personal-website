@@ -1,0 +1,162 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+// Colors
+:root {
+  --off-black: hsl(0, 0%, 5%);
+  --off-white: hsl(0, 0%, 95%);
+  --fg-color: var(--off-white);
+  --bg-color: var(--off-black);
+  --accent-color: hsl(0, 70%, 60%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --fg-color: var(--off-black);
+    --bg-color: var(--off-white);
+  }
+}
+
+// Page styles
+* {
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-color);
+  color: var(--fg-color);
+}
+
+a {
+  --link-color: var(--fg-color);
+
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    --link-color: var(--accent-color);
+  }
+
+  svg {
+    fill: var(--link-color);
+  }
+}
+
+// Center content when it's shorter than viewport height
+.content-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Main grid
+.grid-container {
+  width: 100%;
+  max-width: 62.5rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.grid-container > * {
+  text-align: center;
+}
+
+header {
+  grid-area: header;
+
+  > h1 {
+    margin-bottom: 0rem;
+  }
+  > h2 {
+    margin-top: 0rem;
+  }
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  font-size: 0.8rem;
+}
+
+// Homepage Profile Photo
+img.profile-photo {
+  margin-top: 1rem;
+  border: 2px solid var(--fg-color);
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+// Calendar Page Calendar
+iframe.calendar-embed {
+  border: 2px solid var(--fg-color);
+  border-radius: 0.5rem;
+  height: calc(-20rem + 100vh);
+  min-height: 25rem;
+  max-height: 60rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// Nav Styles
+nav {
+  font-size: 0.8rem;
+  margin: 0.5rem;
+
+  > ul {
+    padding: 0;
+    margin: 0 -0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > li {
+      --nav-fg-color: var(--fg-color);
+
+      list-style: none;
+      margin: 0.25rem;
+
+      > a {
+        color: var(--nav-fg-color);
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+
+        svg {
+          &.icon {
+            padding: 0.2rem;
+            border-radius: 0.25rem;
+            fill: var(--bg-color);
+            background: var(--nav-fg-color);
+          }
+
+          fill: var(--nav-fg-color);
+          // width: 1rem;
+        }
+
+        > * {
+          margin-right: 0.25rem;
+        }
+      }
+
+      &:hover {
+        --nav-fg-color: var(--accent-color);
+      }
+    }
+  }
+}

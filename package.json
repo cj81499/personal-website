@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "sass": "^1.49.9"
+  },
+  "scripts": {
+    "build:sass": "sass --style=compressed assets/styles.scss assets/styles.css"
+  }
+}
