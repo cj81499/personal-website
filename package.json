@@ -3,6 +3,7 @@
     "sass": "^1.49.9"
   },
   "scripts": {
+    "build": "npm run build:sass",
     "build:sass": "sass --style=compressed assets/styles.scss assets/styles.css"
   }
 }
