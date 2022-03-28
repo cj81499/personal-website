@@ -1,0 +1,25 @@
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # base = "."
+  publish = "_site"
+  command = "npm run build"
+
+# [[plugins]]
+#   package = "@netlify/plugin-a11y"       # https://github.com/netlify-labs/netlify-plugin-a11y
+#   package = "@netlify/plugin-lighthouse" # https://github.com/netlify-labs/netlify-plugin-lighthouse
+#   package = "@netlify/plugin-sitemap"    # https://github.com/netlify-labs/netlify-plugin-sitemap
+#   package = "netlify-plugin-debug-cache" # https://github.com/netlify-labs/netlify-plugin-debug-cache
+
+[build.processing]
+  skip_processing = false
+  [build.processing.css]
+    bundle = true
+    minify = true
+  [build.processing.js]
+    bundle = true
+    minify = true
+  [build.processing.html]
+    pretty_urls = true
+  [build.processing.images]
+    compress = true
