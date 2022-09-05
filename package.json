@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "sass": "^1.54.6"
+    "sass": "^1.54.8"
   },
   "scripts": {
     "build": "npm run build:sass",
