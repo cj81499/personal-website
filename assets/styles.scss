@@ -120,7 +120,6 @@ nav {
 
   > ul {
     padding: 0;
-    margin: 0 -0.25rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -129,7 +128,7 @@ nav {
       --nav-fg-color: var(--fg-color);
 
       list-style: none;
-      margin: 0.25rem;
+      margin: 0.25rem 0.5rem;
 
       > a {
         color: var(--nav-fg-color);
@@ -143,6 +142,8 @@ nav {
             border-radius: 0.25rem;
             fill: var(--bg-color);
             background: var(--nav-fg-color);
+            height: 24px;
+            width: 24px;
           }
 
           fill: var(--nav-fg-color);
