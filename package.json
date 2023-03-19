@@ -1,9 +1,12 @@
 {
-  "dependencies": {
-    "sass": "^1.59.3"
-  },
+  "name": "personal-website",
   "scripts": {
-    "build": "npm run build:sass",
-    "build:sass": "sass --style=compressed assets/styles.scss assets/styles.css"
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy-plugin-directory-output": "^1.0.1"
   }
 }
