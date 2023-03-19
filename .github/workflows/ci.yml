@@ -1,0 +1,16 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-code-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: npx prettier --check '**/*'
