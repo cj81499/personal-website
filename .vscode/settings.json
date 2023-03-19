@@ -3,15 +3,26 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
-  "html.format.endWithNewline": true,
-  "html.format.indentHandlebars": true,
-  "html.format.maxPreserveNewLines": 1,
-  "html.format.templating": true,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.njk": "html"
+  }
 }
