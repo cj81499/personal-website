@@ -6,6 +6,7 @@ LICENSE
 .*ignore
 .nvmrc
 .editorconfig
+.git-blame-ignore-revs
 
 *.toml
 *.png
