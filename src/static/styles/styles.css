@@ -75,6 +75,9 @@ footer p {
   font-size: 0.8rem;
 }
 
+a.profile-photo-link {
+  font-size: 0;
+}
 img.profile-photo {
   border: 2px solid currentColor;
   width: 10rem;
