@@ -2,13 +2,14 @@
 :root {
   --off-black: hsl(0, 0%, 5%);
   --off-white: hsl(0, 0%, 95%);
+  --accent-color: hsl(0, 70%, 60%);
   --fg-color: var(--off-white);
   --bg-color: var(--off-black);
-  --accent-color: hsl(0, 70%, 60%);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
+    --accent-color: hsl(0, 70%, 50%);
     --fg-color: var(--off-black);
     --bg-color: var(--off-white);
   }
@@ -75,7 +76,7 @@ footer p {
 }
 
 img.profile-photo {
-  border: 2px solid var(--fg-color);
+  border: 2px solid currentColor;
   width: 10rem;
   height: 10rem;
   object-fit: cover;

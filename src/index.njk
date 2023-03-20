@@ -14,7 +14,9 @@
     <div class="content-center">
       <div class="grid-container">
         <header>
-          <img class="profile-photo" src="/static/images/profile.png" alt="Photograph of Cal Jacobson" />
+          <a href="/static/images/profile.png">
+            <img class="profile-photo" src="/static/images/profile.png" alt="Photograph of Cal Jacobson" />
+          </a>
 
           <h1>Cal Jacobson</h1>
           <h2>Software Engineer</h2>
@@ -22,10 +24,7 @@
           <nav aria-label="Site Navigation">
             <ul>
               <li>
-                <a href="/">
-                  <object class="icon" data="/static/images/icons/Home.svg" type="image/svg+xml"></object>
-                  Home
-                </a>
+                <a href="/">{% include 'icons/Home.svg' %} Home</a>
               </li>
               <!-- TODO -->
               <!-- <li><a href="/about-me">About Me</a></li> -->
@@ -42,34 +41,21 @@
           <nav aria-label="Social Media">
             <ul>
               <li>
-                <a href="https://github.com/cj81499">
-                  <object class="icon" data="/static/images/icons/GitHub.svg" type="image/svg+xml"></object>
-                  GitHub
-                </a>
+                <a href="https://github.com/cj81499">{% include 'icons/GitHub.svg' %} GitHub</a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/cal-jacobson/">
-                  <object class="icon" data="/static/images/icons/LinkedIn.svg" type="image/svg+xml"></object>
-                  LinkedIn
-                </a>
+                <a href="https://www.linkedin.com/in/cal-jacobson/">{% include 'icons/LinkedIn.svg' %} LinkedIn</a>
               </li>
               <li>
-                <a href="https://twitter.com/cj81499">
-                  <object class="icon" data="/static/images/icons/Twitter.svg" type="image/svg+xml"></object>
-                  Twitter
-                </a>
+                <a href="https://twitter.com/cj81499">{% include 'icons/Twitter.svg' %} Twitter</a>
               </li>
               <li>
-                <a rel="me" href="https://fosstodon.org/@cj81499">
-                  <object class="icon" data="/static/images/icons/Mastodon.svg" type="image/svg+xml"></object>
-                  Mastodon
-                </a>
+                <a rel="me" href="https://fosstodon.org/@cj81499">{% include 'icons/Mastodon.svg' %} Mastodon</a>
               </li>
               <li>
-                <a href="https://stackoverflow.com/users/13173164/cj81499">
-                  <object class="icon" data="/static/images/icons/StackOverflow.svg" type="image/svg+xml"></object>
-                  StackOverflow
-                </a>
+                <a href="https://stackoverflow.com/users/13173164/cj81499"
+                  >{% include 'icons/StackOverflow.svg' %} StackOverflow</a
+                >
               </li>
             </ul>
           </nav>
