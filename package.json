@@ -10,6 +10,6 @@
     "@11ty/eleventy-plugin-directory-output": "^1.0.1",
     "@prettier/plugin-xml": "^2.2.0",
     "eleventy-plugin-gen-favicons": "^1.1.2",
-    "prettier": "^2.8.6"
+    "prettier": "^2.8.7"
   }
 }
