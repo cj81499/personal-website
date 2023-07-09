@@ -4,9 +4,19 @@
     "source.organizeImports": true
   },
   "editor.formatOnSave": true,
+  "files.associations": {
+    "*.svg": "html"
+  },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "prettier.documentSelectors": ["**/*.svg", "**/*.njk"],
+  "search.exclude": {
+    "package-lock.json": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -22,10 +32,10 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[yaml]": {
+  "[nunjucks]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "files.associations": {
-    "*.njk": "html"
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
