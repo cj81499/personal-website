@@ -9,7 +9,8 @@
     {
       "files": "*.svg",
       "options": {
-        "parser": "xml"
+        "parser": "xml",
+        "plugins": ["@prettier/plugin-xml"]
       }
     }
   ]
