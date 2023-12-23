@@ -3,7 +3,9 @@
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "format": "prettier '**/*'",
+    "format-check": "prettier --check '**/*'"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
