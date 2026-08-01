@@ -1,5 +1,1 @@
-const NOW = new Date();
-
-module.exports = {
-  NOW,
-};
+export const NOW = new Date();
