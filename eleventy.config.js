@@ -1,3 +1,4 @@
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import dirOutputPlugin from "@11ty/eleventy-plugin-directory-output";
 import faviconsPlugin from "eleventy-plugin-gen-favicons";
 
@@ -10,7 +11,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.setQuietMode(true);
   eleventyConfig.addPlugin(dirOutputPlugin);
 
-  // https://www.npmjs.com/package/eleventy-plugin-gen-favicons
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: OUTPUT_DIR });
 
   eleventyConfig.addPassthroughCopy(`${SRC_DIR}/static`);
