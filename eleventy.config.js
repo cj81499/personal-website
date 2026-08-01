@@ -1,13 +1,14 @@
-const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
-const faviconsPlugin = require("eleventy-plugin-gen-favicons");
+import dirOutputPlugin from "@11ty/eleventy-plugin-directory-output";
+import faviconsPlugin from "eleventy-plugin-gen-favicons";
 
 const SRC_DIR = "src";
 const OUTPUT_DIR = "_site";
 
-module.exports = function (eleventyConfig) {
+/** @param {import('@11ty/eleventy/UserConfig').default} eleventyConfig */
+export default async function (eleventyConfig) {
   // https://www.11ty.dev/docs/plugins/directory-output/
   eleventyConfig.setQuietMode(true);
-  eleventyConfig.addPlugin(directoryOutputPlugin);
+  eleventyConfig.addPlugin(dirOutputPlugin);
 
   // https://www.npmjs.com/package/eleventy-plugin-gen-favicons
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: OUTPUT_DIR });
@@ -23,4 +24,4 @@ module.exports = function (eleventyConfig) {
       data: "_data",
     },
   };
-};
+}
