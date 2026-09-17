@@ -100,12 +100,16 @@ function pngToIco(png, size) {
 
 /**
  * @param {import('@11ty/eleventy/UserConfig').default} eleventyConfig
- * @param {{ source: string, outputDir: string }} options
+ * @param {{ source: string }} options
  */
-export default function (eleventyConfig, { source, outputDir }) {
+export default function (eleventyConfig, { source }) {
   eleventyConfig.addWatchTarget(source);
 
   eleventyConfig.on("eleventy.before", async () => {
+    // Read per build rather than at registration so `--output` is honored;
+    // Eleventy resolves it before plugins run, but only the build knows the
+    // final value.
+    const outputDir = eleventyConfig.directories.output;
     await fs.mkdir(outputDir, { recursive: true });
     const out = (file) => path.join(outputDir, file);
 

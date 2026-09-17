@@ -13,7 +13,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(faviconPlugin, {
     // The page's own profile photo, so the icon follows whenever it is replaced.
     source: `${SRC_DIR}/static/images/profile.png`,
-    outputDir: OUTPUT_DIR,
   });
 
   eleventyConfig.addPassthroughCopy(`${SRC_DIR}/static`);
