@@ -3,6 +3,15 @@
 // inspo:
 // - https://www.npmjs.com/package/eleventy-favicon
 // - https://www.npmjs.com/package/eleventy-plugin-gen-favicons
+//
+// Three of the article's six files are deliberately skipped. It recommends
+// icon-192.png, icon-512.png and a webmanifest listing them, all of which exist
+// to make a site installable as a PWA. This site is not meant to be installed,
+// and a manifest carrying icons but none of the name / start_url / display
+// fields Chrome's install criteria require would not make it installable
+// anyway -- so emitting them would mean encoding ~525KB per build that nothing
+// reads. The article's SVG icon is skipped for a different reason; see the TODO
+// beside the shortcode.
 
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -21,22 +30,14 @@ const RING_COLOR = "#F1F1F1";
 // Zooms past the shoulders so the face still reads at 32px.
 const CROP = { left: 366 / 2180, top: 288 / 2180, size: 1395 / 2180 };
 
-/** Circular icons for the browser tab and the web app manifest. */
-const ROUND_ICONS = [
-  { file: "icon-192.png", size: 192 },
-  { file: "icon-512.png", size: 512 },
-];
-
 const ICO_SIZE = 32;
 const APPLE_TOUCH_SIZE = 180;
 
-const MANIFEST = {
-  icons: ROUND_ICONS.map(({ file, size }) => ({
-    src: `/${file}`,
-    sizes: `${size}x${size}`,
-    type: "image/png",
-  })),
-};
+// Encoded truecolor. 256-color quantization would save ~62KB across the two
+// icons, but the faint red bleacher logo in the background sits close enough to
+// the blue-grey around it that the quantizer folds the two together and the
+// shape stops existing. A coherent few-unit hue shift across a whole feature is
+// near-invisible to mean-difference metrics and obvious to the eye.
 
 /** Clips `size`-square content to a circle and strokes the ring over it. */
 function circleOverlays(size) {
@@ -112,8 +113,6 @@ export default function (eleventyConfig, { source, outputDir }) {
     const framed = () => sharp(source).extract(region);
 
     await Promise.all([
-      ...ROUND_ICONS.map(({ file, size }) => round(framed, size).toFile(out(file))),
-
       // iOS composites apple-touch-icon onto its own rounded-rect mask and
       // renders any transparency as black, so this one stays square and opaque.
       framed().resize(APPLE_TOUCH_SIZE, APPLE_TOUCH_SIZE).flatten().png().toFile(out("apple-touch-icon.png")),
@@ -121,8 +120,6 @@ export default function (eleventyConfig, { source, outputDir }) {
       round(framed, ICO_SIZE)
         .toBuffer()
         .then((png) => fs.writeFile(out("favicon.ico"), pngToIco(png, ICO_SIZE))),
-
-      fs.writeFile(out("manifest.webmanifest"), JSON.stringify(MANIFEST)),
     ]);
   });
 
@@ -136,7 +133,6 @@ export default function (eleventyConfig, { source, outputDir }) {
     [
       `<link rel="icon" href="/favicon.ico" sizes="${ICO_SIZE}x${ICO_SIZE}" />`,
       `<link rel="apple-touch-icon" href="/apple-touch-icon.png" />`,
-      `<link rel="manifest" href="/manifest.webmanifest" />`,
     ].join("\n    "),
   );
 }
