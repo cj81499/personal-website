@@ -1,5 +1,5 @@
 import dirOutputPlugin from "@11ty/eleventy-plugin-directory-output";
-import faviconsPlugin from "eleventy-plugin-gen-favicons";
+import faviconPlugin from "./src/_plugins/favicon.js";
 
 const SRC_DIR = "src";
 const OUTPUT_DIR = "_site";
@@ -10,8 +10,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.setQuietMode(true);
   eleventyConfig.addPlugin(dirOutputPlugin);
 
-  // https://www.npmjs.com/package/eleventy-plugin-gen-favicons
-  eleventyConfig.addPlugin(faviconsPlugin, { outputDir: OUTPUT_DIR });
+  eleventyConfig.addPlugin(faviconPlugin, {
+    // The page's own profile photo, so the icon follows whenever it is replaced.
+    source: `${SRC_DIR}/static/images/profile.png`,
+  });
 
   eleventyConfig.addPassthroughCopy(`${SRC_DIR}/static`);
 
