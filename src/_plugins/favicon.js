@@ -99,6 +99,24 @@ function pngToIco(png, size) {
 }
 
 /**
+ * True when every output already exists and is newer than every input, so a
+ * rebuild would only re-encode identical bytes. A missing file throws and
+ * reports stale, which is the safe direction.
+ */
+async function upToDate(inputs, outputs) {
+  const mtime = async (file) => (await fs.stat(file)).mtimeMs;
+  try {
+    const [newestInput, oldestOutput] = await Promise.all([
+      Promise.all(inputs.map(mtime)).then((times) => Math.max(...times)),
+      Promise.all(outputs.map(mtime)).then((times) => Math.min(...times)),
+    ]);
+    return oldestOutput > newestInput;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * @param {import('@11ty/eleventy/UserConfig').default} eleventyConfig
  * @param {{ source: string }} options
  */
@@ -112,6 +130,14 @@ export default function (eleventyConfig, { source }) {
     const outputDir = eleventyConfig.directories.output;
     await fs.mkdir(outputDir, { recursive: true });
     const out = (file) => path.join(outputDir, file);
+
+    // Under --watch this hook runs for every rebuild, including edits to a
+    // template or stylesheet that cannot affect an icon. This file counts as an
+    // input so that changing the geometry above still takes effect.
+    const outputs = [out("favicon.ico"), out("apple-touch-icon.png")];
+    if (await upToDate([source, import.meta.filename], outputs)) {
+      return;
+    }
 
     const region = await cropRegion(source);
     const framed = () => sharp(source).extract(region);
